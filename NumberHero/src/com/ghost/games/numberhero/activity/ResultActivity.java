@@ -4,6 +4,9 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.TextView;
 
@@ -14,7 +17,8 @@ import android.widget.TextView;
  * @throws 2014-1-22ÉÏÎç12:07:19 
  */
 public class ResultActivity extends Activity {
-	public final static String TAG = "LifeCycleTest";
+	private final static String TAG = "LifeCycleTest";
+	private Button restartButton;
 	private Chronometer chronometer2;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -35,9 +39,20 @@ public class ResultActivity extends Activity {
 		 resultList.setText(bundle.getString("resultList"));
 		 chronometer2=(Chronometer)findViewById(R.id.chronometer2);
 		 chronometer2.setBase(bundle.getLong("times"));
-		 
+		 restartButton=(Button)findViewById(R.id.restart);
+		 restartButton.setOnClickListener(restartListener);
 	}
 
+	public OnClickListener restartListener = new OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			// TODO Auto-generated method stub
+			Intent intent=new Intent();
+			intent.setClass(ResultActivity.this, NumberHeroActivity.class);
+			startActivity(intent);
+		}
+	};
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub

@@ -167,7 +167,7 @@ public class NumberHeroActivity extends Activity {
 		
 		return a+"A"+b+"B";
 	}
-	private String joinString(List<String> list){
+	public String joinString(List<String> list){
 		StringBuffer sb=new StringBuffer();
 		Iterator<String> iterator=list.iterator();
 		while (iterator.hasNext()) {

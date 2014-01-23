@@ -16,5 +16,14 @@
 		<activity android:name=".ResultActivity"
                   android:label="@string/app_name">
         </activity>
-    </application>
-</manifest>
+    	<!--<uses-library android:name="android.test.runner"/> -->
+   	</application>
+    <!--
+    <instrumentation 
+    	android:name="android.test.InstrumentationTestRunner"
+    	android:targetPackage="com.ghost.games.numberhero.activity"
+    	android:label="Testing"
+    	>
+    	</instrumentation>
+    -->
+    </manifest>
