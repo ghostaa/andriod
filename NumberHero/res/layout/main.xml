@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical" android:layout_width="fill_parent"
+	android:layout_height="fill_parent" android:weightSum="1" 
+	android:background="@drawable/background">
+	<LinearLayout android:id="@+id/linearLayout1"
+		android:layout_width="match_parent"
+		 android:layout_height="wrap_content"
+		 
+		 >
+		<EditText
+			android:id="@+id/et1" 
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:maxLength="1"
+			android:singleLine="true"
+			android:inputType="number"
+			android:background="@drawable/shape"
+			android:gravity="center_horizontal"
+			>
+		<requestFocus></requestFocus>
+		</EditText>
+		<EditText
+			android:id="@+id/et2"  
+			android:layout_weight="1" 
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:maxLength="1"
+			android:singleLine="true"
+			android:inputType="number"
+			android:background="@drawable/shape"
+			android:gravity="center"
+			>
+		</EditText>
+		<EditText 
+			android:id="@+id/et3" 
+			android:layout_weight="1" 
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:maxLength="1"
+			android:singleLine="true"
+			android:inputType="number"
+			android:background="@drawable/shape"
+			android:gravity="center"
+			>
+		</EditText>
+		<EditText 
+			android:id="@+id/et4" 
+			android:layout_weight="1"
+			android:layout_height="wrap_content"
+			android:layout_width="fill_parent"
+			android:maxLength="1"
+			android:singleLine="true"
+			android:inputType="number"
+			android:background="@drawable/shape"
+			android:gravity="center"
+			>
+		</EditText>
+		<Button 
+			android:layout_weight="1" 
+			android:text="提交"
+			 android:id="@+id/button1" 
+			 android:layout_width="fill_parent" 
+			 android:layout_height="wrap_content"></Button>
+	</LinearLayout>
+	<LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
+		<Chronometer android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/chronometer1" android:gravity="left"></Chronometer>
+	</LinearLayout>
+	<EditText android:editable="false" android:layout_height="wrap_content" android:id="@+id/showResult" android:gravity="top" android:layout_width="match_parent" android:scrollHorizontally="true" android:layout_weight="0.38">
+		
+	</EditText>
+</LinearLayout>
