@@ -19,7 +19,10 @@ import com.ghost.games.numberhero.numberstring.NumberString;
 public class NumberHeroActivity extends Activity {
 	private String result=new NumberString().getNormalString();
 	private Button btn1;
+	private EditText et1;
+	private EditText et2;
 	private static String TAG = "LifeCycleTest";
+	private static String LOG = "log";
 	private Chronometer chronometer1;
 	
     /** Called when the activity is first created. */
@@ -33,8 +36,8 @@ public class NumberHeroActivity extends Activity {
         Log.v(TAG, "NumberHeroActivity -> onCreate");
         chronometer1=(Chronometer)findViewById(R.id.chronometer1);
         chronometer1.start();
+        
     }
-    
     private OnClickListener listener=new OnClickListener() {
 		
 		@Override

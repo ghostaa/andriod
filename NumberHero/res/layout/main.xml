@@ -18,6 +18,7 @@
 			android:inputType="number"
 			android:background="@drawable/shape"
 			android:gravity="center_horizontal"
+			android:layout_marginRight="5dp"
 			>
 		<requestFocus></requestFocus>
 		</EditText>
@@ -31,6 +32,7 @@
 			android:inputType="number"
 			android:background="@drawable/shape"
 			android:gravity="center"
+			android:layout_marginRight="5dp"
 			>
 		</EditText>
 		<EditText 
@@ -43,6 +45,7 @@
 			android:inputType="number"
 			android:background="@drawable/shape"
 			android:gravity="center"
+			android:layout_marginRight="5dp"
 			>
 		</EditText>
 		<EditText 
@@ -55,6 +58,7 @@
 			android:inputType="number"
 			android:background="@drawable/shape"
 			android:gravity="center"
+			android:layout_marginRight="5dp"
 			>
 		</EditText>
 		<Button 
