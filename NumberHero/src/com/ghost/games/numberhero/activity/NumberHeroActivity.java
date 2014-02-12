@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.KeyguardManager;
+import android.app.KeyguardManager.KeyguardLock;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -29,6 +31,13 @@ public class NumberHeroActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        //¹Ø±Õ¼üÅÌËø
+      /*  KeyguardManager mKeyGuardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
+        KeyguardLock mLock = mKeyGuardManager.newKeyguardLock("NumberHeroActivity");
+        mLock.disableKeyguard(); */
+        
+        
         setContentView(R.layout.main);
         btn1=(Button)findViewById(R.id.button1);
         btn1.setOnClickListener(listener);
