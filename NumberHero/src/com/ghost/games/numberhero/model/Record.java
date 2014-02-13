@@ -10,20 +10,42 @@ package com.ghost.games.numberhero.model;
 public class Record {
 	
 	private int id;
-	private String times;
+	private long times;
 	private int userid;
+	
+	
+	
+	
+	public Record() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	
+	public Record( long times, int userid) {
+		super();
+		this.times = times;
+		this.userid = userid;
+	}
+
+
 	public int getId() {
 		return id;
 	}
 	public void setId(int id) {
 		this.id = id;
 	}
-	public String getTimes() {
+	
+	public long getTimes() {
 		return times;
 	}
-	public void setTimes(String times) {
+
+
+	public void setTimes(long times) {
 		this.times = times;
 	}
+
+
 	public int getUserid() {
 		return userid;
 	}

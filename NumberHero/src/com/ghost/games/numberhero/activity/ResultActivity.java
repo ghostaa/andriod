@@ -1,13 +1,23 @@
 package com.ghost.games.numberhero.activity;
 
+import java.util.Calendar;
+import java.util.Iterator;
+import java.util.List;
+
+import com.ghost.games.numberhero.dao.RecordDAO;
+import com.ghost.games.numberhero.model.Record;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
+import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 /**
@@ -19,7 +29,10 @@ import android.widget.TextView;
 public class ResultActivity extends Activity {
 	private final static String TAG = "LifeCycleTest";
 	private Button restartButton;
+	private Button emptyAndRestart;
 	private Chronometer chronometer2;
+	private RecordDAO recordDAO = new RecordDAO(this);;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -39,15 +52,38 @@ public class ResultActivity extends Activity {
 		 resultList.setText(bundle.getString("resultList"));
 		 chronometer2=(Chronometer)findViewById(R.id.chronometer2);
 		 chronometer2.setBase(bundle.getLong("times"));
+		 recordDAO.addRecord(new Record(bundle.getLong("times"), 1));
 		 restartButton=(Button)findViewById(R.id.restart);
-		 restartButton.setOnClickListener(restartListener);
+		 restartButton.setOnClickListener(buttonListener);
+		 emptyAndRestart=(Button)findViewById(R.id.emptyAndRestart);
+		 emptyAndRestart.setOnClickListener(buttonListener);
+		 List<Record> records=recordDAO.getRecordsByUserid(1);
+		 Iterator<Record> iterator=records.iterator();
+		 final LinearLayout lin = (LinearLayout) findViewById(R.id.recordLinearlayout);  
+		 
+		 while (iterator.hasNext()) {
+			 Chronometer chronometer=new Chronometer(this);  
+			 chronometer.setBase(iterator.next().getTimes());
+			 lin.addView(chronometer);
+		}
+		 
+
+		 
 	}
 
-	public OnClickListener restartListener = new OnClickListener() {
+	public OnClickListener buttonListener = new OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
-			// TODO Auto-generated method stub
+			Button btn=(Button)v;
+			switch (btn.getId()) {
+			case R.id.restart:
+				
+				break;
+			case R.id.emptyAndRestart:
+				recordDAO.emptyAllRecordsByUserid(1);
+				break;
+			}
 			Intent intent=new Intent();
 			intent.setClass(ResultActivity.this, NumberHeroActivity.class);
 			startActivity(intent);
