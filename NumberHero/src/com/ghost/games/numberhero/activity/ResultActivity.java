@@ -1,24 +1,21 @@
 package com.ghost.games.numberhero.activity;
 
-import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
-
-import com.ghost.games.numberhero.dao.RecordDAO;
-import com.ghost.games.numberhero.model.Record;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
-import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.ghost.games.numberhero.dao.RecordDAO;
+import com.ghost.games.numberhero.model.Record;
 
 /**
  * @author ÑÖ¶«Åô
