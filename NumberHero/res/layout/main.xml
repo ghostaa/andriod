@@ -3,75 +3,92 @@
 	android:orientation="vertical" android:layout_width="fill_parent"
 	android:layout_height="fill_parent" android:weightSum="1" 
 	android:background="@drawable/background">
-	<LinearLayout android:id="@+id/linearLayout1"
-		android:layout_width="match_parent"
-		 android:layout_height="wrap_content"
-		 
-		 >
-		<EditText
-			android:id="@+id/et1" 
-			android:layout_weight="1"
-			android:layout_height="wrap_content"
-			android:layout_width="fill_parent"
-			android:maxLength="1"
-			android:singleLine="true"
-			android:inputType="number"
-			android:background="@drawable/shape"
-			android:gravity="center_horizontal"
-			android:layout_marginRight="5dp"
-			>
-		<requestFocus></requestFocus>
-		</EditText>
-		<EditText
-			android:id="@+id/et2"  
-			android:layout_weight="1" 
-			android:layout_height="wrap_content"
-			android:layout_width="fill_parent"
-			android:maxLength="1"
-			android:singleLine="true"
-			android:inputType="number"
-			android:background="@drawable/shape"
-			android:gravity="center"
-			android:layout_marginRight="5dp"
-			>
-		</EditText>
-		<EditText 
-			android:id="@+id/et3" 
-			android:layout_weight="1" 
-			android:layout_height="wrap_content"
-			android:layout_width="fill_parent"
-			android:maxLength="1"
-			android:singleLine="true"
-			android:inputType="number"
-			android:background="@drawable/shape"
-			android:gravity="center"
-			android:layout_marginRight="5dp"
-			>
-		</EditText>
-		<EditText 
-			android:id="@+id/et4" 
-			android:layout_weight="1"
-			android:layout_height="wrap_content"
-			android:layout_width="fill_parent"
-			android:maxLength="1"
-			android:singleLine="true"
-			android:inputType="number"
-			android:background="@drawable/shape"
-			android:gravity="center"
-			android:layout_marginRight="5dp"
-			>
-		</EditText>
-		<Button 
-			android:layout_weight="1" 
-			android:text="提交"
-			 android:id="@+id/button1" 
-			 android:layout_width="fill_parent" 
-			 android:layout_height="wrap_content"></Button>
-	</LinearLayout>
-	<LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
-		<Chronometer android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/chronometer1" android:gravity="left"></Chronometer>
-	</LinearLayout>
-	<EditText android:editable="false" android:layout_height="wrap_content" android:id="@+id/showResult" android:gravity="top" android:layout_width="match_parent" android:scrollHorizontally="true" android:layout_weight="0.38">
+	<LinearLayout	android:layout_width="match_parent"	 android:layout_height="wrap_content">
+			<LinearLayout  android:orientation="vertical"	android:layout_width="wrap_content"	 android:layout_height="wrap_content">
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton1" android:src="@drawable/one" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton2" android:src="@drawable/two" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton3" android:src="@drawable/three" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton4" android:src="@drawable/four" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton5" android:src="@drawable/five" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton6" android:src="@drawable/six" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton7" android:src="@drawable/seven" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton8" android:src="@drawable/eight" android:layout_marginBottom="-1dp"></ImageButton>
+				<ImageButton android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/imageButton9" android:src="@drawable/nine" android:layout_marginBottom="-1dp"></ImageButton>
+			</LinearLayout>
+			<LinearLayout  android:orientation="vertical"	android:layout_width="match_parent"	 android:layout_height="wrap_content">
+				<LinearLayout android:id="@+id/linearLayout1"
+					android:layout_width="match_parent"
+					 android:layout_height="wrap_content"
+					 
+					 >
+					<EditText
+						android:id="@+id/et1" 
+						android:nextFocusRight="@+id/et2"
+						android:layout_weight="1"
+						android:layout_height="wrap_content"
+						android:layout_width="fill_parent"
+						android:maxLength="1"
+						android:singleLine="true"
+						android:inputType="number"
+						android:background="@drawable/shape"
+						android:gravity="center_horizontal"
+						android:layout_marginRight="5dp"
+						>
+					<requestFocus></requestFocus>
+					</EditText>
+					<EditText
+						android:id="@+id/et2"  
+						android:nextFocusRight="@+id/et3"
+						android:layout_weight="1" 
+						android:layout_height="wrap_content"
+						android:layout_width="fill_parent"
+						android:maxLength="1"
+						android:singleLine="true"
+						android:inputType="number"
+						android:background="@drawable/shape"
+						android:gravity="center"
+						android:layout_marginRight="5dp"
+						>
+					</EditText>
+					<EditText 
+						android:id="@+id/et3" 
+						android:layout_weight="1" 
+						android:layout_height="wrap_content"
+						android:layout_width="fill_parent"
+						android:maxLength="1"
+						android:singleLine="true"
+						android:inputType="number"
+						android:background="@drawable/shape"
+						android:gravity="center"
+						android:layout_marginRight="5dp"
+						>
+					</EditText>
+					<EditText 
+						android:id="@+id/et4" 
+						android:layout_weight="1"
+						android:layout_height="wrap_content"
+						android:layout_width="fill_parent"
+						android:maxLength="1"
+						android:singleLine="true"
+						android:inputType="number"
+						android:background="@drawable/shape"
+						android:gravity="center"
+						android:layout_marginRight="5dp"
+						>
+					</EditText>
+					<Button 
+						android:layout_weight="1" 
+						android:text="提交"
+						 android:id="@+id/button1" 
+						 android:layout_width="fill_parent" 
+						 android:layout_height="wrap_content"></Button>
+				</LinearLayout>
+				<LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="vertical">
+					<Chronometer android:layout_height="fill_parent" android:layout_width="fill_parent" android:id="@+id/chronometer1" android:gravity="left"></Chronometer>
+				</LinearLayout>
+				<EditText android:editable="false" android:layout_height="wrap_content" android:id="@+id/showResult" android:gravity="top" android:layout_width="match_parent" android:scrollHorizontally="true" android:layout_weight="0.38">
 		
-	</EditText>
+				</EditText>
+			</LinearLayout>
+	</LinearLayout>
 </LinearLayout>
