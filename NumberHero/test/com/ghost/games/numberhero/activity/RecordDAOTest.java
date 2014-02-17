@@ -16,7 +16,7 @@ public class RecordDAOTest extends AndroidTestCase {
 		Record record = new Record(9l, 1);
 		recordDAO.addRecord(record);
 		Log.i(TAG, "add successed");
-	}
+	}  
 
 	public void testGetRecordsByUserid() {
 		RecordDAO recordDAO = new RecordDAO(this.getContext());

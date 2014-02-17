@@ -18,10 +18,10 @@ import com.ghost.games.numberhero.dao.RecordDAO;
 import com.ghost.games.numberhero.model.Record;
 
 /**
- * @author ÑÖ¶«Åô
+ * @author é˜Žä¸œé¹
  * @Title: main
  * @Description: TODO
- * @throws 2014-1-22ÉÏÎç12:07:19 
+ * @throws 2014-1-22ä¸Šåˆ12:07:19 
  */
 public class ResultActivity extends Activity {
 	private final static String TAG = "LifeCycleTest";
@@ -36,7 +36,7 @@ public class ResultActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		/**
 		*onCreate
-		*ÉÏÎç12:07:34
+		*ä¸Šåˆ12:07:34
 		*TODO
 		*/
 		 setContentView(R.layout.result);
@@ -92,7 +92,7 @@ public class ResultActivity extends Activity {
 		super.onDestroy();
 		/**
 		*onDestroy
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "ResultActivity -> onDestroy");
@@ -103,7 +103,7 @@ public class ResultActivity extends Activity {
 		super.onPause();
 		/**
 		*onPause
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "ResultActivity -> onPause");
@@ -114,7 +114,7 @@ public class ResultActivity extends Activity {
 		super.onRestart();
 		/**
 		*onRestart
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "ResultActivity -> onRestart");
@@ -125,7 +125,7 @@ public class ResultActivity extends Activity {
 		super.onResume();
 		/**
 		*onResume
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "ResultActivity -> onResume");
@@ -136,7 +136,7 @@ public class ResultActivity extends Activity {
 		super.onStart();
 		/**
 		*onStart
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "ResultActivity -> onStart");
@@ -147,7 +147,7 @@ public class ResultActivity extends Activity {
 		super.onStop();
 		/**
 		*onStop
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "ResultActivity -> onStop");

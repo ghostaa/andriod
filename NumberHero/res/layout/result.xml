@@ -17,7 +17,7 @@
      <TextView android:textColor="#FF7F27"  android:layout_height="wrap_content" android:text="" android:id="@+id/resultList" android:layout_width="wrap_content"></TextView>
      <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal">
 		<Button 
-	     	android:text="清空记录并开始新的一局"
+	     	android:text="清空记录并开始新的一局" 
 	     	android:id="@+id/emptyAndRestart"
 	     	android:layout_width="wrap_content"
 	     	android:layout_height="wrap_content"

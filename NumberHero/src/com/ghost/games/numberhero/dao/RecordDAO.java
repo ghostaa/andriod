@@ -28,7 +28,7 @@ public class RecordDAO {
 	}
 	
 	/**
-	 * ��õ�ǰuser id�ļ�¼
+	 * 获得当前user id的记录
 	 * @param userid
 	 * @return
 	 */

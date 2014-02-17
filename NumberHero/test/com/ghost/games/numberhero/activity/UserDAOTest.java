@@ -17,6 +17,6 @@ public class UserDAOTest extends AndroidTestCase {
 		} else {
 			Log.i(TAG, "" + user.getName());
 		}
-	}
+	} 
 
 }

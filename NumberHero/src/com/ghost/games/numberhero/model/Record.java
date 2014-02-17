@@ -2,10 +2,10 @@ package com.ghost.games.numberhero.model;
 
 
 /**
- * @author ÑÖ¶«Åô
+ * @author é˜ä¸œé¹
  * @Title: main
  * @Description: TODO
- * @throws 2014-2-12ÏÂÎç08:49:13 
+ * @throws 2014-2-12ä¸‹åˆ08:49:13 
  */
 public class Record {
 	

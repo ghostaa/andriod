@@ -1,9 +1,9 @@
 package com.ghost.games.numberhero.model;
 /**
- * @author ÑÖ¶«Åô
+ * @author é˜ä¸œé¹
  * @Title: main
  * @Description: TODO
- * @throws 2014-2-12ÏÂÎç08:48:23 
+ * @throws 2014-2-12ä¸‹åˆ08:48:23 
  */
 public class User {
 	private int id;
@@ -31,6 +31,11 @@ public class User {
 	}
 	public void setName(String name) {
 		this.name = name;
+	}
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return this.name;
 	}
 	
 	

@@ -5,13 +5,10 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.Activity;
-import android.app.KeyguardManager;
-import android.app.KeyguardManager.KeyguardLock;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.InputType;
 import android.util.Log;
-import android.view.FocusFinder;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -46,7 +43,7 @@ public class NumberHeroActivity extends Activity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        //¹Ø±Õ¼üÅÌËø
+        //å…³é—­é”®ç›˜é”
       /*  KeyguardManager mKeyGuardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
         KeyguardLock mLock = mKeyGuardManager.newKeyguardLock("NumberHeroActivity");
         mLock.disableKeyguard(); */
@@ -78,7 +75,7 @@ public class NumberHeroActivity extends Activity {
 		et2= (EditText)findViewById(R.id.et2);
 		et3= (EditText)findViewById(R.id.et3);
 		et4= (EditText)findViewById(R.id.et4);
-		//ÆÁ±ÎÈí¼üÅÌ
+		//å±è”½è½¯é”®ç›˜
 		et1.setInputType(InputType.TYPE_NULL);
 		et2.setInputType(InputType.TYPE_NULL);
 		et3.setInputType(InputType.TYPE_NULL);
@@ -153,7 +150,7 @@ public class NumberHeroActivity extends Activity {
 		public void onClick(View v) {
 			/**
 			 *onClick
-			 *ÏÂÎç06:36:50
+			 *ä¸‹åˆ06:36:50
 			 *TODO
 			 */
 			Button btn=(Button)v;
@@ -199,7 +196,7 @@ public class NumberHeroActivity extends Activity {
 		super.onDestroy();
 		/**
 		*onDestroy
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "NumberHeroActivity -> onDestroy");
@@ -210,7 +207,7 @@ public class NumberHeroActivity extends Activity {
 		super.onPause();
 		/**
 		*onPause
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "NumberHeroActivity -> onPause");
@@ -221,7 +218,7 @@ public class NumberHeroActivity extends Activity {
 		super.onRestart();
 		/**
 		*onRestart
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "NumberHeroActivity -> onRestart");
@@ -232,7 +229,7 @@ public class NumberHeroActivity extends Activity {
 		super.onResume();
 		/**
 		*onResume
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "NumberHeroActivity -> onResume");
@@ -243,7 +240,7 @@ public class NumberHeroActivity extends Activity {
 		super.onStart();
 		/**
 		*onStart
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "NumberHeroActivity -> onStart");
@@ -254,7 +251,7 @@ public class NumberHeroActivity extends Activity {
 		super.onStop();
 		/**
 		*onStop
-		*ÏÂÎç11:55:53
+		*ä¸‹åˆ11:55:53
 		*TODO
 		*/
 		Log.v(TAG, "NumberHeroActivity -> onStop");
@@ -277,7 +274,7 @@ public class NumberHeroActivity extends Activity {
 				
 			
 		}else {
-			return "Î»ÊıÉÙ";
+			return "ä½æ•°å°‘";
 		}
 		
 		return a+"A"+b+"B";

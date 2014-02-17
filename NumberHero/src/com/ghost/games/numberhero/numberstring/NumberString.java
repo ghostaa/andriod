@@ -3,10 +3,10 @@ package com.ghost.games.numberhero.numberstring;
 import java.util.Random;
 
 /**
- * @author ÑÖ¶«Åô
+ * @author é˜ä¸œé¹
  * @Title: main
  * @Description: TODO
- * @throws 2014-1-19ÏÂÎç06:52:41 
+ * @throws 2014-1-19ä¸‹åˆ06:52:41 
  */
 public class NumberString {
 	private int howManyDigits=4;
