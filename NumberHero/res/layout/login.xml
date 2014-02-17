@@ -14,5 +14,6 @@
             <SeekBar android:layout_weight="1" android:layout_height="wrap_content" android:layout_width="match_parent" android:id="@+id/seekBar1"></SeekBar>       </LinearLayout>
     </LinearLayout>
     <Button android:text="Button" android:id="@+id/button1" android:layout_width="wrap_content" android:layout_height="wrap_content"></Button>
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="开始游戏" android:id="@+id/startgame"></Button>
     
 </LinearLayout>

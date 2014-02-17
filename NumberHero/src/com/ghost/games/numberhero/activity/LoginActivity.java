@@ -25,7 +25,9 @@ public class LoginActivity extends Activity {
 	 private List<User> allItems;   
 	 private ArrayAdapter<User> adapter;   
 	 private static final String LOG="LoginActivity";
-	 private UserDAO userDAO = new UserDAO(this);;
+	 private UserDAO userDAO = new UserDAO(this);
+	 private Button startgame;
+	 private User currentUser;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -38,7 +40,7 @@ public class LoginActivity extends Activity {
 		 allItems = userDAO.getUserList();  
 		 if (allItems.size()<=0) {
 			   
-			 Intent intent=new Intent();
+			Intent intent=new Intent();
 			intent.setClass(LoginActivity.this, CreateUserActivity.class);
 			startActivity(intent);
 		}
@@ -48,6 +50,8 @@ public class LoginActivity extends Activity {
          nicknameSelect.setAdapter(adapter);
          nicknameSelect.setPrompt("请选择一个可爱的昵称");
          nicknameSelect.setOnItemSelectedListener(spinnerOnClicklistener);
+         startgame.setOnClickListener(buttonListener);
+         
 	}
 	 private OnClickListener buttonListener=new OnClickListener() {
 			
@@ -60,8 +64,14 @@ public class LoginActivity extends Activity {
 					
 					
 					break;
-				
+				case R.id.startgame:
+					Intent intent=new Intent();
+					intent.setClass(LoginActivity.this, NumberHeroActivity.class);
+					intent.putExtra("userid", currentUser.getId());
+					startActivity(intent);
+					break;
 				}
+				
 			}
 		}; 
 		
@@ -76,8 +86,8 @@ public class LoginActivity extends Activity {
 				Log.v(LOG,spinner.getText().toString());
 				Log.v(LOG,new String(String.valueOf(id)));
 				Log.v(LOG,new String(String.valueOf(position)));*/
-				User user =(User)nicknameSelect.getSelectedItem();
-				Log.v(LOG,new String(String.valueOf(user.getId())));
+				currentUser =(User)nicknameSelect.getSelectedItem();
+				Log.v(LOG,new String(String.valueOf(currentUser.getId())));
 			}
 
 			@Override
@@ -86,7 +96,8 @@ public class LoginActivity extends Activity {
 			}
 		};
 	  private void initView() {   
-		  nicknameSelect = (Spinner) findViewById(R.id.nicknameSelect);   
+		  nicknameSelect = (Spinner) findViewById(R.id.nicknameSelect); 
+		  startgame=(Button)findViewById(R.id.startgame);
 	  }  
 
 }
