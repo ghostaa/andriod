@@ -1,10 +1,12 @@
 package com.ghost.games.numberhero.activity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -12,9 +14,7 @@ import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.ghost.games.numberhero.dao.UserDAO;
@@ -28,6 +28,8 @@ public class LoginActivity extends Activity {
 	 private UserDAO userDAO = new UserDAO(this);
 	 private Button startgame;
 	 private User currentUser;
+	 private Button createNewUser;
+	 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -51,12 +53,14 @@ public class LoginActivity extends Activity {
          nicknameSelect.setPrompt("请选择一个可爱的昵称");
          nicknameSelect.setOnItemSelectedListener(spinnerOnClicklistener);
          startgame.setOnClickListener(buttonListener);
+         createNewUser.setOnClickListener(buttonListener);
          
 	}
 	 private OnClickListener buttonListener=new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
+				Intent intent=new Intent();
 				Button btn=(Button)v;
 				switch (btn.getId()) {
 				case R.id.button1:
@@ -65,9 +69,18 @@ public class LoginActivity extends Activity {
 					
 					break;
 				case R.id.startgame:
-					Intent intent=new Intent();
+					SharedPreferences pres = LoginActivity.this.getSharedPreferences("UserConfig", Context.MODE_PRIVATE);
+					Editor editor=pres.edit();
+					editor.putInt("CurrentUserId", currentUser.getId());
+					editor.commit();
+					intent=new Intent();
 					intent.setClass(LoginActivity.this, NumberHeroActivity.class);
 					intent.putExtra("userid", currentUser.getId());
+					startActivity(intent);
+					break;
+				case R.id.createNewUser:
+					intent=new Intent();
+					intent.setClass(LoginActivity.this, CreateUserActivity.class);
 					startActivity(intent);
 					break;
 				}
@@ -98,6 +111,7 @@ public class LoginActivity extends Activity {
 	  private void initView() {   
 		  nicknameSelect = (Spinner) findViewById(R.id.nicknameSelect); 
 		  startgame=(Button)findViewById(R.id.startgame);
+		  createNewUser=(Button)findViewById(R.id.createNewUser);
 	  }  
 
 }

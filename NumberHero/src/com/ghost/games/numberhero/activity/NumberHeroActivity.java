@@ -84,6 +84,7 @@ public class NumberHeroActivity extends Activity {
         Log.v("result", result);
         Log.v(TAG, "NumberHeroActivity -> onCreate");
         chronometer1=(Chronometer)findViewById(R.id.chronometer1);
+        Log.v("result", String.valueOf(chronometer1.getBase()));;
         chronometer1.start();
         
     }

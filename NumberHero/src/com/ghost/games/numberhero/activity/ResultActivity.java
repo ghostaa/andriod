@@ -4,7 +4,9 @@ import java.util.Iterator;
 import java.util.List;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -29,7 +31,7 @@ public class ResultActivity extends Activity {
 	private Button emptyAndRestart;
 	private Chronometer chronometer2;
 	private RecordDAO recordDAO = new RecordDAO(this);;
-	
+	private SharedPreferences pres;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -49,12 +51,13 @@ public class ResultActivity extends Activity {
 		 resultList.setText(bundle.getString("resultList"));
 		 chronometer2=(Chronometer)findViewById(R.id.chronometer2);
 		 chronometer2.setBase(bundle.getLong("times"));
-		 recordDAO.addRecord(new Record(bundle.getLong("times"), 1));
+		 pres = ResultActivity.this.getSharedPreferences("UserConfig", Context.MODE_PRIVATE);
+		 recordDAO.addRecord(new Record(bundle.getLong("times"), pres.getInt("CurrentUserId", 0)));
 		 restartButton=(Button)findViewById(R.id.restart);
 		 restartButton.setOnClickListener(buttonListener);
 		 emptyAndRestart=(Button)findViewById(R.id.emptyAndRestart);
 		 emptyAndRestart.setOnClickListener(buttonListener);
-		 List<Record> records=recordDAO.getRecordsByUserid(1);
+		 List<Record> records=recordDAO.getRecordsByUserid( pres.getInt("CurrentUserId", 0));
 		 Iterator<Record> iterator=records.iterator();
 		 final LinearLayout lin = (LinearLayout) findViewById(R.id.recordLinearlayout);  
 		 
@@ -78,7 +81,7 @@ public class ResultActivity extends Activity {
 				
 				break;
 			case R.id.emptyAndRestart:
-				recordDAO.emptyAllRecordsByUserid(1);
+				recordDAO.emptyAllRecordsByUserid( pres.getInt("CurrentUserId", 0));
 				break;
 			}
 			Intent intent=new Intent();

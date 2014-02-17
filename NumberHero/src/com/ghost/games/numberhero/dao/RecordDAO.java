@@ -9,11 +9,13 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 public class RecordDAO {
 	private DBOpenHelper helper;
 	private SQLiteDatabase db;
 	private String Recrod_Table_name="record";
+	private static String TAG = "RecordDAO";
 	
 	public RecordDAO(Context context) {
 		helper = new DBOpenHelper(context);
@@ -25,6 +27,7 @@ public class RecordDAO {
 		contentValues.put("times", record.getTimes());
 		contentValues.put("user_id", record.getUserid());
 		db.insert(Recrod_Table_name, "id", contentValues);
+		Log.v(TAG, String.valueOf(record.getTimes()));
 	}
 	
 	/**
