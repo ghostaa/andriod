@@ -6,16 +6,7 @@
   android:layout_height="match_parent"
   android:background="@drawable/background"
   >
-    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
-        <TextView android:textColor="#FFFFFF" android:layout_height="wrap_content" android:text="恭喜你回答正确,结果为：" android:layout_width="wrap_content"></TextView>
-        <TextView android:textColor="#FF0000"  android:layout_height="wrap_content" android:text="" android:id="@+id/result" android:layout_width="wrap_content"></TextView>
-    </LinearLayout>
-    <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal">
-        <TextView android:textColor="#FFFFFF"  android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="所用时间:"></TextView>
-        <Chronometer  android:textColor="#FF0000"  android:layout_height="wrap_content" android:text="Chronometer" android:layout_width="wrap_content" android:id="@+id/chronometer2"></Chronometer>
-    </LinearLayout>
-     <TextView android:textColor="#FF7F27"  android:layout_height="wrap_content" android:text="" android:id="@+id/resultList" android:layout_width="wrap_content"></TextView>
-     <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal">
+  	 <LinearLayout android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal">
 		<Button 
 	     	android:text="清空记录并开始新的一局" 
 	     	android:id="@+id/emptyAndRestart"
@@ -30,8 +21,24 @@
 	     ></Button>
 	     
     </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textColor="#FFFFFF" android:layout_height="wrap_content" android:text="恭喜你回答正确,结果为：" android:layout_width="wrap_content"></TextView>
+        <TextView android:textColor="#FF0000"  android:layout_height="wrap_content" android:text="" android:id="@+id/result" android:layout_width="wrap_content"></TextView>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayout2" android:layout_height="wrap_content" android:layout_width="match_parent" android:orientation="horizontal">
+        <TextView android:textColor="#FFFFFF"  android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="所用时间:"></TextView>
+        <Chronometer  android:textColor="#FF0000"  android:layout_height="wrap_content" android:text="Chronometer" android:layout_width="wrap_content" android:id="@+id/chronometer2"></Chronometer>
+    </LinearLayout>
+    <ScrollView android:layout_width="match_parent"	 android:layout_height="160dp">
+    	<LinearLayout  android:orientation="vertical" android:layout_width="wrap_content"	 android:layout_height="wrap_content">
+    	 <TextView android:textColor="#FF7F27" android:layout_height="wrap_content"  android:text="" android:id="@+id/resultList" android:layout_width="wrap_content"></TextView>
+     	</LinearLayout>
+     </ScrollView>
+    
 	
 	 <TextView android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/textView1" android:textAppearance="?android:attr/textAppearanceMedium" android:text="最快时间记录列表"></TextView>
-	 <LinearLayout  android:orientation="vertical" android:id="@+id/recordLinearlayout" android:layout_width="match_parent" android:layout_height="wrap_content">
-    </LinearLayout>
+	<ScrollView android:layout_width="match_parent"	 android:layout_height="match_parent">
+		 <LinearLayout  android:orientation="vertical" android:id="@+id/recordLinearlayout" android:layout_width="match_parent" android:layout_height="wrap_content">
+	    </LinearLayout>
+	</ScrollView>
 </LinearLayout>

@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.text.InputType;
 import android.util.Log;
 import android.view.View;
@@ -84,7 +85,7 @@ public class NumberHeroActivity extends Activity {
         Log.v("result", result);
         Log.v(TAG, "NumberHeroActivity -> onCreate");
         chronometer1=(Chronometer)findViewById(R.id.chronometer1);
-        Log.v("result", String.valueOf(chronometer1.getBase()));;
+        chronometer1.setBase(SystemClock.elapsedRealtime());
         chronometer1.start();
         
     }
@@ -95,35 +96,37 @@ public class NumberHeroActivity extends Activity {
 			ImageButton  btn=(ImageButton)v;
 			// TODO Auto-generated method stub
 			EditText et=(EditText)getCurrentFocus();
-			switch (btn.getId()) {
-			case R.id.imageButton1:
-			     et.setText("1");
-			     
-				break;
-			case R.id.imageButton2:
-				et.setText("2");
-				break;
-			case R.id.imageButton3:
-				et.setText("3");
-				break;
-			case R.id.imageButton4:
-				et.setText("4");
-				break;
-			case R.id.imageButton5:
-				et.setText("5");
-				break;
-			case R.id.imageButton6:
-				et.setText("6");
-				break;
-			case R.id.imageButton7:
-				et.setText("7");
-				break;
-			case R.id.imageButton8:
-				et.setText("8");
-				break;
-			case R.id.imageButton9:
-				et.setText("9");
-				break;
+			//判断是否聚焦在结果框中，如果不在才执行赋值操作
+			if (et.getId()!=R.id.showResult) {
+				switch (btn.getId()) {
+				case R.id.imageButton1:
+				    et.setText("1");
+					break;
+				case R.id.imageButton2:
+					et.setText("2");
+					break;
+				case R.id.imageButton3:
+					et.setText("3");
+					break;
+				case R.id.imageButton4:
+					et.setText("4");
+					break;
+				case R.id.imageButton5:
+					et.setText("5");
+					break;
+				case R.id.imageButton6:
+					et.setText("6");
+					break;
+				case R.id.imageButton7:
+					et.setText("7");
+					break;
+				case R.id.imageButton8:
+					et.setText("8");
+					break;
+				case R.id.imageButton9:
+					et.setText("9");
+					break;
+				}
 			}
 			
 			switch (et.getId()) {
@@ -173,11 +176,11 @@ public class NumberHeroActivity extends Activity {
 				et3.setText("");
 				et4.setText("");
 				if ("4A0B".equals(judgeResult)) {
-					
+					chronometer1.stop();
 					Intent intent=new Intent();
 					intent.setClass(NumberHeroActivity.this, ResultActivity.class);
 					intent.putExtra("result", result);
-					intent.putExtra("times", chronometer1.getBase());
+					intent.putExtra("times", SystemClock.elapsedRealtime()- chronometer1.getBase());
 					intent.putExtra("resultList", showResult.getText().toString());
 					startActivity(intent);
 				}

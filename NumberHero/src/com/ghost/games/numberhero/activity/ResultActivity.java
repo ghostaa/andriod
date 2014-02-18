@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 
 import com.ghost.games.numberhero.dao.RecordDAO;
 import com.ghost.games.numberhero.model.Record;
+import com.ghost.games.numberhero.util.UserConfig;
 
 /**
  * @author 阎东鹏
@@ -50,20 +52,20 @@ public class ResultActivity extends Activity {
 		 TextView resultList=(TextView)findViewById(R.id.resultList);
 		 resultList.setText(bundle.getString("resultList"));
 		 chronometer2=(Chronometer)findViewById(R.id.chronometer2);
-		 chronometer2.setBase(bundle.getLong("times"));
-		 pres = ResultActivity.this.getSharedPreferences("UserConfig", Context.MODE_PRIVATE);
-		 recordDAO.addRecord(new Record(bundle.getLong("times"), pres.getInt("CurrentUserId", 0)));
+		 chronometer2.setBase(SystemClock.elapsedRealtime()-bundle.getLong("times"));
+		 pres = ResultActivity.this.getSharedPreferences(UserConfig.CONFIG_NAME, Context.MODE_PRIVATE);
+		 recordDAO.addRecord(new Record(bundle.getLong("times"), pres.getInt(UserConfig.CURRENT_USER_ID, 0)));
 		 restartButton=(Button)findViewById(R.id.restart);
 		 restartButton.setOnClickListener(buttonListener);
 		 emptyAndRestart=(Button)findViewById(R.id.emptyAndRestart);
 		 emptyAndRestart.setOnClickListener(buttonListener);
-		 List<Record> records=recordDAO.getRecordsByUserid( pres.getInt("CurrentUserId", 0));
+		 List<Record> records=recordDAO.getRecordsByUserid( pres.getInt(UserConfig.CURRENT_USER_ID, 0));
 		 Iterator<Record> iterator=records.iterator();
 		 final LinearLayout lin = (LinearLayout) findViewById(R.id.recordLinearlayout);  
 		 
 		 while (iterator.hasNext()) {
 			 Chronometer chronometer=new Chronometer(this);  
-			 chronometer.setBase(iterator.next().getTimes());
+			 chronometer.setBase(SystemClock.elapsedRealtime()-iterator.next().getTimes());
 			 lin.addView(chronometer);
 		}
 		 

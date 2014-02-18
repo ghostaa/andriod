@@ -38,7 +38,7 @@ public class RecordDAO {
 	public List<Record> getRecordsByUserid(int userid){
 		db=helper.getWritableDatabase();
 		List<Record> records = new ArrayList<Record>();
-		Cursor cursor = db.query(Recrod_Table_name, new String[]{"id","times","user_id"}, "user_id=?", new String[]{String.valueOf(userid)}, null, null, "times desc");
+		Cursor cursor = db.query(Recrod_Table_name, new String[]{"id","times","user_id"}, "user_id=?", new String[]{String.valueOf(userid)}, null, null, "times asc");
 		while (cursor.moveToNext()) {
 			records.add(new Record(cursor.getLong(1),cursor.getInt(2)));
 		}

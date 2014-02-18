@@ -19,6 +19,7 @@ import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.ghost.games.numberhero.dao.UserDAO;
 import com.ghost.games.numberhero.model.User;
+import com.ghost.games.numberhero.util.UserConfig;
 
 public class LoginActivity extends Activity {
 	 private Spinner nicknameSelect;  
@@ -29,7 +30,8 @@ public class LoginActivity extends Activity {
 	 private Button startgame;
 	 private User currentUser;
 	 private Button createNewUser;
-	 
+	 private SharedPreferences pres;
+	 private Editor editor;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -50,6 +52,11 @@ public class LoginActivity extends Activity {
 		 adapter = new ArrayAdapter<User>(this,android.R.layout.simple_spinner_item, allItems);   
          adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);   
          nicknameSelect.setAdapter(adapter);
+         if (pres.getInt(UserConfig.CURRENT_USER_POSITION, 0)>(nicknameSelect.getCount()-1)) {
+        	nicknameSelect.setSelection(nicknameSelect.getCount()-1);
+		}else {
+			nicknameSelect.setSelection(pres.getInt(UserConfig.CURRENT_USER_POSITION, 0));
+		}
          nicknameSelect.setPrompt("请选择一个可爱的昵称");
          nicknameSelect.setOnItemSelectedListener(spinnerOnClicklistener);
          startgame.setOnClickListener(buttonListener);
@@ -69,9 +76,8 @@ public class LoginActivity extends Activity {
 					
 					break;
 				case R.id.startgame:
-					SharedPreferences pres = LoginActivity.this.getSharedPreferences("UserConfig", Context.MODE_PRIVATE);
-					Editor editor=pres.edit();
-					editor.putInt("CurrentUserId", currentUser.getId());
+					
+					editor.putInt(UserConfig.CURRENT_USER_ID , currentUser.getId());
 					editor.commit();
 					intent=new Intent();
 					intent.setClass(LoginActivity.this, NumberHeroActivity.class);
@@ -101,6 +107,9 @@ public class LoginActivity extends Activity {
 				Log.v(LOG,new String(String.valueOf(position)));*/
 				currentUser =(User)nicknameSelect.getSelectedItem();
 				Log.v(LOG,new String(String.valueOf(currentUser.getId())));
+				
+				editor.putInt(UserConfig.CURRENT_USER_POSITION, position);
+				editor.commit();
 			}
 
 			@Override
@@ -112,6 +121,8 @@ public class LoginActivity extends Activity {
 		  nicknameSelect = (Spinner) findViewById(R.id.nicknameSelect); 
 		  startgame=(Button)findViewById(R.id.startgame);
 		  createNewUser=(Button)findViewById(R.id.createNewUser);
+		  pres = LoginActivity.this.getSharedPreferences(UserConfig.CONFIG_NAME, Context.MODE_PRIVATE);
+		  editor=pres.edit();
 	  }  
 
 }
