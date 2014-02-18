@@ -9,12 +9,16 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.ghost.games.numberhero.dao.UserDAO;
@@ -63,7 +67,50 @@ public class LoginActivity extends Activity {
          createNewUser.setOnClickListener(buttonListener);
          
 	}
-	 private OnClickListener buttonListener=new OnClickListener() {
+	
+	
+	
+	 @Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		// TODO Auto-generated method stub
+		 if (keyCode == KeyEvent.KEYCODE_BACK) {
+			return false;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+
+
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		 menu.add(0, 1, 1, "重新开始");
+		 menu.add(0, 2, 2, "提示");
+		 menu.add(0, 3, 3, "设置");
+		 menu.add(0, 4, 4, "关于");
+		 menu.add(0, 5, 5, "退出");
+		 
+		return true;
+	}
+	 
+
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
+		if (item.getItemId() == 5) {
+			
+		}
+		
+		return super.onOptionsItemSelected(item);
+	}
+
+
+
+
+	private OnClickListener buttonListener=new OnClickListener() {
 			
 			@Override
 			public void onClick(View v) {
@@ -117,6 +164,8 @@ public class LoginActivity extends Activity {
 				// TODO Auto-generated method stub
 			}
 		};
+		
+		
 	  private void initView() {   
 		  nicknameSelect = (Spinner) findViewById(R.id.nicknameSelect); 
 		  startgame=(Button)findViewById(R.id.startgame);
