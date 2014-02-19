@@ -42,6 +42,7 @@ public class RecordDAO {
 		while (cursor.moveToNext()) {
 			records.add(new Record(cursor.getLong(1),cursor.getInt(2)));
 		}
+		cursor.close();
 		return records;
 	}
 	

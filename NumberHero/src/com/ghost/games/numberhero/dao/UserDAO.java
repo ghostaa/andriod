@@ -32,6 +32,7 @@ public class UserDAO {
 		if (cursor.moveToNext()) {
 			return new User(cursor.getInt(0), cursor.getString(1));
 		}
+		cursor.close();
 		return null;
 	}
 	/**
@@ -47,6 +48,7 @@ public class UserDAO {
 			User user=new User(cursor.getInt(0), cursor.getString(1));
 			userList.add(user);
 		}
+		cursor.close();
 		return userList;
 	}
 	/**

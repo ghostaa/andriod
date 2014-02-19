@@ -9,6 +9,9 @@ import com.ghost.games.numberhero.util.MyApplication;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
@@ -54,7 +57,18 @@ public class NumberHeroMenuManager {
 				activity.startActivity(intent);
 				break;
 			case ABOUT:
-				Toast.makeText(activity, "版本号 1.0.4.140219",Toast.LENGTH_SHORT).show();
+				PackageManager manager = activity.getPackageManager();
+				PackageInfo info;
+				try {
+					info = manager.getPackageInfo(activity.getPackageName(), 0);
+					String version = info.versionName;
+					Toast.makeText(activity, "版本号:" + version + "\n作者:幽灵小子",Toast.LENGTH_SHORT).show();
+				} catch (NameNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					Toast.makeText(activity, "未找到版本号",Toast.LENGTH_SHORT).show();
+				}
+
 				break;
 			case EXIT:
 				MyApplication.getInstance().exit();
