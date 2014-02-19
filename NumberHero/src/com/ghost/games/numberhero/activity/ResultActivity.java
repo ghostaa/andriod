@@ -11,15 +11,21 @@ import android.os.Bundle;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.ghost.games.numberhero.dao.RecordDAO;
+import com.ghost.games.numberhero.menu.MenuConstant;
+import com.ghost.games.numberhero.menu.NumberHeroMenuManager;
 import com.ghost.games.numberhero.model.Record;
+import com.ghost.games.numberhero.util.MyApplication;
 import com.ghost.games.numberhero.util.UserConfig;
 
 /**
@@ -39,6 +45,7 @@ public class ResultActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		MyApplication.getInstance().addActivity(this);
 		/**
 		*onCreate
 		*上午12:07:34
@@ -92,6 +99,26 @@ public class ResultActivity extends Activity {
 			startActivity(intent);
 		}
 	};
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		
+		NumberHeroMenuManager.filterMenu(menu, MenuConstant.PROMPT_GROUP,MenuConstant.RESTART);
+		return true;
+	}
+	 
+
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		NumberHeroMenuManager.launchMenu(item,this);
+		
+		return super.onOptionsItemSelected(item);
+	}
+	
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub

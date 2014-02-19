@@ -11,14 +11,20 @@ import android.os.SystemClock;
 import android.text.InputType;
 import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
+import com.ghost.games.numberhero.menu.MenuConstant;
+import com.ghost.games.numberhero.menu.NumberHeroMenuManager;
 import com.ghost.games.numberhero.numberstring.NumberString;
+import com.ghost.games.numberhero.util.MyApplication;
 
 public class NumberHeroActivity extends Activity {
 	private String result=new NumberString().getNormalString();
@@ -44,7 +50,7 @@ public class NumberHeroActivity extends Activity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+        MyApplication.getInstance().addActivity(this);
         //关闭键盘锁
       /*  KeyguardManager mKeyGuardManager = (KeyguardManager)getSystemService(KEYGUARD_SERVICE);
         KeyguardLock mLock = mKeyGuardManager.newKeyguardLock("NumberHeroActivity");
@@ -194,6 +200,26 @@ public class NumberHeroActivity extends Activity {
 
 		
 	}; 
+	
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		// TODO Auto-generated method stub
+		
+		NumberHeroMenuManager.filterMenu(menu);
+		return true;
+	}
+	 
+
+
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		// TODO Auto-generated method stub
+		NumberHeroMenuManager.launchMenu(item,this,result);
+		
+		return super.onOptionsItemSelected(item);
+	}
 	
 	@Override
 	protected void onDestroy() {

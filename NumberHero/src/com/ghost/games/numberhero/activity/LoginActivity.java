@@ -22,7 +22,10 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.ghost.games.numberhero.dao.UserDAO;
+import com.ghost.games.numberhero.menu.MenuConstant;
+import com.ghost.games.numberhero.menu.NumberHeroMenuManager;
 import com.ghost.games.numberhero.model.User;
+import com.ghost.games.numberhero.util.MyApplication;
 import com.ghost.games.numberhero.util.UserConfig;
 
 public class LoginActivity extends Activity {
@@ -40,7 +43,7 @@ public class LoginActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-
+		MyApplication.getInstance().addActivity(this);
 		setContentView(R.layout.login);
 		initView();  
 		Button button=(Button)findViewById(R.id.button1);
@@ -84,12 +87,8 @@ public class LoginActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		 menu.add(0, 1, 1, "重新开始");
-		 menu.add(0, 2, 2, "提示");
-		 menu.add(0, 3, 3, "设置");
-		 menu.add(0, 4, 4, "关于");
-		 menu.add(0, 5, 5, "退出");
-		 
+		
+		NumberHeroMenuManager.filterMenu(menu, MenuConstant.PROMPT_GROUP,MenuConstant.RESTART);
 		return true;
 	}
 	 
@@ -99,10 +98,7 @@ public class LoginActivity extends Activity {
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// TODO Auto-generated method stub
-		Toast.makeText(this, item.getTitle(),Toast.LENGTH_SHORT).show();
-		if (item.getItemId() == 5) {
-			
-		}
+		NumberHeroMenuManager.launchMenu(item,this);
 		
 		return super.onOptionsItemSelected(item);
 	}
