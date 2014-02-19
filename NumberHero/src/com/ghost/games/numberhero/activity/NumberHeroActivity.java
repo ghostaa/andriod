@@ -6,6 +6,7 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.SystemClock;
 import android.text.InputType;
@@ -15,6 +16,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnFocusChangeListener;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -83,12 +85,16 @@ public class NumberHeroActivity extends Activity {
 		et2= (EditText)findViewById(R.id.et2);
 		et3= (EditText)findViewById(R.id.et3);
 		et4= (EditText)findViewById(R.id.et4);
+		et1.setOnFocusChangeListener(editTextFocusChangeListener);
+		et2.setOnFocusChangeListener(editTextFocusChangeListener);
+		et3.setOnFocusChangeListener(editTextFocusChangeListener);
+		et4.setOnFocusChangeListener(editTextFocusChangeListener);
+		
 		//屏蔽软键盘
 		et1.setInputType(InputType.TYPE_NULL);
 		et2.setInputType(InputType.TYPE_NULL);
 		et3.setInputType(InputType.TYPE_NULL);
 		et4.setInputType(InputType.TYPE_NULL);
-		
         Log.v("result", result);
         Log.v(TAG, "NumberHeroActivity -> onCreate");
         chronometer1=(Chronometer)findViewById(R.id.chronometer1);
@@ -96,6 +102,35 @@ public class NumberHeroActivity extends Activity {
         chronometer1.start();
         
     }
+    
+    private OnFocusChangeListener editTextFocusChangeListener=new OnFocusChangeListener(){
+
+		@Override
+		public void onFocusChange(View v, boolean hasFocus) {
+			// TODO Auto-generated method stub
+			EditText  et=(EditText)v;
+			if (hasFocus) {
+				switch (et.getId()) {
+				case R.id.et1:
+					et1.setBackgroundResource(R.drawable.shapeyellow);
+					break;
+				case R.id.et2:
+					et2.setBackgroundResource(R.drawable.shapeyellow);
+					break;
+				case R.id.et3:
+					et3.setBackgroundResource(R.drawable.shapeyellow);
+					break;
+				case R.id.et4:
+					et4.setBackgroundResource(R.drawable.shapeyellow);
+					break;
+				}
+			}else {
+				et.setBackgroundResource(R.drawable.shape);
+			}
+		}
+    	
+    };
+    
     private OnClickListener imageButtonListener = new OnClickListener() {
 		
 		@Override
@@ -331,6 +366,9 @@ public class NumberHeroActivity extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		 if (keyCode == KeyEvent.KEYCODE_BACK) {
+			Intent intent=new Intent();
+			intent.setClass(NumberHeroActivity.this, LoginActivity.class);
+			startActivity(intent);
 			return false;
 		}
 		return super.onKeyDown(keyCode, event);

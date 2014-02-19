@@ -16,4 +16,9 @@ public class MenuConstant {
 	public static final int EXIT = 5;
 	public static final String EXIT_TEXT = "退出";
 	public static final int EXIT_GROUP = 5;
+	
+
+	public static final int INDEX = 6;
+	public static final String INDEX_TEXT = "回到主页";
+	public static final int INDEX_GROUP = 6;
 }

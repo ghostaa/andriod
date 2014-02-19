@@ -28,6 +28,7 @@ public class CreateUserActivity extends Activity {
 	private Button selectExistUserButton;
 	private TextView usernameView;
 	private UserDAO userDAO = new UserDAO(this);
+	private int currentUserCount ;
 	private SharedPreferences pres;
 	private Editor editor;
 	
@@ -40,7 +41,8 @@ public class CreateUserActivity extends Activity {
 		initView();
 		addUserButton.setOnClickListener(buttonListener);
 		selectExistUserButton.setOnClickListener(buttonListener);
-		if (userDAO.getUserList().size()>0) {
+		
+		if (currentUserCount > 0) {
 			
 			selectExistUserButton.setVisibility(View.VISIBLE);
 		}else {
@@ -48,11 +50,16 @@ public class CreateUserActivity extends Activity {
 		}
 		
 	}
+	
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
-		
-		NumberHeroMenuManager.filterMenu(menu, MenuConstant.PROMPT_GROUP,MenuConstant.RESTART);
+		if (currentUserCount>0) {
+			NumberHeroMenuManager.filterMenu(menu, MenuConstant.PROMPT_GROUP,MenuConstant.RESTART);
+		}else {
+			NumberHeroMenuManager.filterMenu(menu, MenuConstant.PROMPT_GROUP,MenuConstant.RESTART,MenuConstant.INDEX_GROUP);
+		}
 		return true;
 	}
 	 
@@ -100,10 +107,14 @@ public class CreateUserActivity extends Activity {
 		}; 
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 			// TODO Auto-generated method stub
-			 if (keyCode == KeyEvent.KEYCODE_BACK) {
+			 if (keyCode == KeyEvent.KEYCODE_BACK && currentUserCount > 0) {
+				Intent intent=new Intent();
+				intent.setClass(CreateUserActivity.this, LoginActivity.class);
+				startActivity(intent);
+				return true;
+			}else {
 				return false;
 			}
-			return super.onKeyDown(keyCode, event);
 	}
 	 private void initView() {   
 		 addUserButton=(Button)findViewById(R.id.button1); 
@@ -111,5 +122,6 @@ public class CreateUserActivity extends Activity {
 		 pres = CreateUserActivity.this.getSharedPreferences(UserConfig.CONFIG_NAME, Context.MODE_PRIVATE);
 		 editor=pres.edit();
 		 selectExistUserButton=(Button)findViewById(R.id.selectExistUser);
-	  }  
+		 currentUserCount = userDAO.getUserList().size();
+	 }  
 }

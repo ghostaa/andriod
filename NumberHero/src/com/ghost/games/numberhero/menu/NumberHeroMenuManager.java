@@ -19,7 +19,8 @@ public class NumberHeroMenuManager {
 		 menu.add(PROMPT_GROUP, PROMPT, 2, PROMPT_TEXT);
 		 menu.add(3, 3, 3, "设置");
 		 menu.add(ABOUT_GROUP, ABOUT, 4, ABOUT_TEXT);
-		 menu.add(EXIT_GROUP, EXIT, 5, EXIT_TEXT);
+		 menu.add(INDEX_GROUP, INDEX, 5, INDEX_TEXT);
+		 menu.add(EXIT_GROUP, EXIT, 6, EXIT_TEXT);
 		for (int i : groupid) {
 			menu.setGroupVisible(i, false);
 		}
@@ -41,11 +42,15 @@ public class NumberHeroMenuManager {
 	
 	public static void launchMenu(MenuItem item,Activity activity){
 		launchMenu(item);
+		Intent intent=new Intent();
 		if (activity!=null && item != null) {
 			switch (item.getItemId()) {
 			case RESTART:
-				Intent intent=new Intent();
 				intent.setClass(activity, NumberHeroActivity.class);
+				activity.startActivity(intent);
+				break;
+			case INDEX:
+				intent.setClass(activity, LoginActivity.class);
 				activity.startActivity(intent);
 				break;
 			case ABOUT:

@@ -77,6 +77,7 @@ public class LoginActivity extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		 if (keyCode == KeyEvent.KEYCODE_BACK) {
+			MyApplication.getInstance().exit();
 			return false;
 		}
 		return super.onKeyDown(keyCode, event);
