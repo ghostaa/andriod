@@ -8,6 +8,8 @@ import com.ghost.games.numberhero.util.MyApplication;
 
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -71,7 +73,27 @@ public class NumberHeroMenuManager {
 
 				break;
 			case EXIT:
-				MyApplication.getInstance().exit();
+				AlertDialog.Builder builder= new AlertDialog.Builder(activity);
+				builder.setTitle("数字英雄").setMessage("是否要退出数字英雄");
+				builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						
+						MyApplication.getInstance().exit();
+					}
+				});
+				builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
+					
+					@Override
+					public void onClick(DialogInterface dialog, int which) {
+						// TODO Auto-generated method stub
+						
+						dialog.cancel();
+					}
+				});
+				builder.create().show();
 				break;
 			}
 		}

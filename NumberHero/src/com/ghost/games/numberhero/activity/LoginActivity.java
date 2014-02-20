@@ -3,7 +3,10 @@ package com.ghost.games.numberhero.activity;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -22,6 +25,7 @@ import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 import com.ghost.games.numberhero.dao.UserDAO;
+import com.ghost.games.numberhero.dialog.DialogManager;
 import com.ghost.games.numberhero.menu.MenuConstant;
 import com.ghost.games.numberhero.menu.NumberHeroMenuManager;
 import com.ghost.games.numberhero.model.User;
@@ -77,7 +81,8 @@ public class LoginActivity extends Activity {
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		// TODO Auto-generated method stub
 		 if (keyCode == KeyEvent.KEYCODE_BACK) {
-			MyApplication.getInstance().exit();
+			//MyApplication.getInstance().exit();
+			DialogManager.onCreateDialog(this);
 			return false;
 		}
 		return super.onKeyDown(keyCode, event);
@@ -103,6 +108,10 @@ public class LoginActivity extends Activity {
 		
 		return super.onOptionsItemSelected(item);
 	}
+
+
+
+
 
 
 
@@ -170,5 +179,5 @@ public class LoginActivity extends Activity {
 		  pres = LoginActivity.this.getSharedPreferences(UserConfig.CONFIG_NAME, Context.MODE_PRIVATE);
 		  editor=pres.edit();
 	  }  
-
+	  
 }
