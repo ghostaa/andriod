@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
+import android.view.View.OnLongClickListener;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -62,24 +63,7 @@ public class NumberHeroActivity extends Activity {
         setContentView(R.layout.main);
         btn1=(Button)findViewById(R.id.button1);
         btn1.setOnClickListener(buttonListener);
-        number1=(ImageButton)findViewById(R.id.imageButton1);
-        number1.setOnClickListener(imageButtonListener);
-        number2=(ImageButton)findViewById(R.id.imageButton2);
-        number2.setOnClickListener(imageButtonListener);
-        number3=(ImageButton)findViewById(R.id.imageButton3);
-        number3.setOnClickListener(imageButtonListener);
-        number4=(ImageButton)findViewById(R.id.imageButton4);
-        number4.setOnClickListener(imageButtonListener);
-        number5=(ImageButton)findViewById(R.id.imageButton5);
-        number5.setOnClickListener(imageButtonListener);
-        number6=(ImageButton)findViewById(R.id.imageButton6);
-        number6.setOnClickListener(imageButtonListener);
-        number7=(ImageButton)findViewById(R.id.imageButton7);
-        number7.setOnClickListener(imageButtonListener);
-        number8=(ImageButton)findViewById(R.id.imageButton8);
-        number8.setOnClickListener(imageButtonListener);
-        number9=(ImageButton)findViewById(R.id.imageButton9);
-        number9.setOnClickListener(imageButtonListener);
+        initImageNumber();
        
         et1= (EditText)findViewById(R.id.et1);
 		et2= (EditText)findViewById(R.id.et2);
@@ -102,6 +86,25 @@ public class NumberHeroActivity extends Activity {
         chronometer1.start();
         
     }
+    
+    private OnLongClickListener imageLongClickListener=new OnLongClickListener(){
+
+		@Override
+		public boolean onLongClick(View v) {
+			// TODO Auto-generated method stub
+			
+			
+			
+			Toast.makeText(NumberHeroActivity.this, result.toString(),Toast.LENGTH_SHORT).show();
+			return false;
+			/**
+			*onLongClick
+			*下午09:27:40
+			*TODO
+			*/
+		}
+    	
+    };
     
     private OnFocusChangeListener editTextFocusChangeListener=new OnFocusChangeListener(){
 
@@ -372,6 +375,36 @@ public class NumberHeroActivity extends Activity {
 			return false;
 		}
 		return super.onKeyDown(keyCode, event);
+	}
+	
+	private void initImageNumber(){
+		number1=(ImageButton)findViewById(R.id.imageButton1);
+        number1.setOnClickListener(imageButtonListener);
+        number1.setOnLongClickListener(imageLongClickListener);
+        number2=(ImageButton)findViewById(R.id.imageButton2);
+        number2.setOnClickListener(imageButtonListener);
+        number2.setOnLongClickListener(imageLongClickListener);
+        number3=(ImageButton)findViewById(R.id.imageButton3);
+        number3.setOnClickListener(imageButtonListener);
+        number3.setOnLongClickListener(imageLongClickListener);
+        number4=(ImageButton)findViewById(R.id.imageButton4);
+        number4.setOnClickListener(imageButtonListener);
+        number4.setOnLongClickListener(imageLongClickListener);
+        number5=(ImageButton)findViewById(R.id.imageButton5);
+        number5.setOnClickListener(imageButtonListener);
+        number5.setOnLongClickListener(imageLongClickListener);
+        number6=(ImageButton)findViewById(R.id.imageButton6);
+        number6.setOnClickListener(imageButtonListener);
+        number6.setOnLongClickListener(imageLongClickListener);
+        number7=(ImageButton)findViewById(R.id.imageButton7);
+        number7.setOnClickListener(imageButtonListener);
+        number7.setOnLongClickListener(imageLongClickListener);
+        number8=(ImageButton)findViewById(R.id.imageButton8);
+        number8.setOnClickListener(imageButtonListener);
+        number8.setOnLongClickListener(imageLongClickListener);
+        number9=(ImageButton)findViewById(R.id.imageButton9);
+        number9.setOnClickListener(imageButtonListener);
+        number9.setOnLongClickListener(imageLongClickListener);
 	}
 	
 }

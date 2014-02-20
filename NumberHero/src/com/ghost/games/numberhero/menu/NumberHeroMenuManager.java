@@ -4,6 +4,7 @@ import static com.ghost.games.numberhero.menu.MenuConstant.*;
 
 import com.ghost.games.numberhero.activity.LoginActivity;
 import com.ghost.games.numberhero.activity.NumberHeroActivity;
+import com.ghost.games.numberhero.dialog.DialogManager;
 import com.ghost.games.numberhero.util.MyApplication;
 
 
@@ -73,27 +74,7 @@ public class NumberHeroMenuManager {
 
 				break;
 			case EXIT:
-				AlertDialog.Builder builder= new AlertDialog.Builder(activity);
-				builder.setTitle("数字英雄").setMessage("是否要退出数字英雄");
-				builder.setPositiveButton("是", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						
-						MyApplication.getInstance().exit();
-					}
-				});
-				builder.setNegativeButton("否", new DialogInterface.OnClickListener() {
-					
-					@Override
-					public void onClick(DialogInterface dialog, int which) {
-						// TODO Auto-generated method stub
-						
-						dialog.cancel();
-					}
-				});
-				builder.create().show();
+				DialogManager.openExitDialog(activity);
 				break;
 			}
 		}

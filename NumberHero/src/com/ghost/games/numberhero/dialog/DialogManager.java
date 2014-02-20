@@ -7,7 +7,7 @@ import android.content.DialogInterface;
 import com.ghost.games.numberhero.util.MyApplication;
 
 public class DialogManager {
-	public static void onCreateDialog(Activity activity) {
+	public static void openExitDialog(Activity activity) {
 		// TODO Auto-generated method stub
 		
 		AlertDialog.Builder builder= new AlertDialog.Builder(activity);

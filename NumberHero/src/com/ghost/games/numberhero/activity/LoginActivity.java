@@ -82,7 +82,7 @@ public class LoginActivity extends Activity {
 		// TODO Auto-generated method stub
 		 if (keyCode == KeyEvent.KEYCODE_BACK) {
 			//MyApplication.getInstance().exit();
-			DialogManager.onCreateDialog(this);
+			DialogManager.openExitDialog(this);
 			return false;
 		}
 		return super.onKeyDown(keyCode, event);
