@@ -1,8 +1,10 @@
 package com.ghost.games.numberhero.activity;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,6 +20,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.View.OnFocusChangeListener;
 import android.view.View.OnLongClickListener;
+import android.view.animation.Animation;
 import android.widget.Button;
 import android.widget.Chronometer;
 import android.widget.EditText;
@@ -45,6 +48,7 @@ public class NumberHeroActivity extends Activity {
 	private EditText et2;
 	private EditText et3;
 	private EditText et4;
+	private Set<Integer> alphaButtonIdSet = new HashSet<Integer>();
 	private static String TAG = "LifeCycleTest";
 	private static String LOG = "log";
 	private Chronometer chronometer1;
@@ -93,10 +97,16 @@ public class NumberHeroActivity extends Activity {
 		public boolean onLongClick(View v) {
 			// TODO Auto-generated method stub
 			
-			
-			
-			Toast.makeText(NumberHeroActivity.this, result.toString(),Toast.LENGTH_SHORT).show();
-			return false;
+			ImageButton ib=(ImageButton)v;
+			if (alphaButtonIdSet.contains(ib.getId())) {
+				ib.setAlpha(255);
+				alphaButtonIdSet.remove(ib.getId());
+			}else {
+				ib.setAlpha(50);
+				alphaButtonIdSet.add(ib.getId());
+				
+			}
+			return true;
 			/**
 			*onLongClick
 			*下午09:27:40
@@ -215,11 +225,10 @@ public class NumberHeroActivity extends Activity {
 				EditText showResult= (EditText)findViewById(R.id.showResult);
 				String submitString=joinString(list);
 				String judgeResult=judgeString(submitString,result);
+				if("".equals(showResult.getText().toString())){
+					showResult.setText("A代表位置正确，B代表数字正确\n");
+				}
 				showResult.setText(showResult.getText().toString()+submitString+"\t"+judgeResult+"\n");
-				et1.setText("");
-				et2.setText("");
-				et3.setText("");
-				et4.setText("");
 				if ("4A0B".equals(judgeResult)) {
 					chronometer1.stop();
 					Intent intent=new Intent();
@@ -229,6 +238,10 @@ public class NumberHeroActivity extends Activity {
 					intent.putExtra("resultList", showResult.getText().toString());
 					startActivity(intent);
 				}
+				et1.setText("");
+				et2.setText("");
+				et3.setText("");
+				et4.setText("");
 				break;
 			
 			}
@@ -239,7 +252,9 @@ public class NumberHeroActivity extends Activity {
 		
 	}; 
 	
-	
+	private String translateResult(String judgeResult){
+		return judgeResult.replace("A", "\t").replace("B", "");
+	}
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// TODO Auto-generated method stub
